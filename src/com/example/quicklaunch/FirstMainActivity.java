@@ -34,18 +34,15 @@ public class FirstMainActivity extends Activity {
 		{
 			intentobject = proximity;
 		}
-
-		if(gesturename.equals("Shake In X"))
+		else if(gesturename.equals("Shake In X"))
 		{
 			intentobject = xaxis;
 		}
-
-		if(gesturename.equals("Shake In Y"))
+		else if(gesturename.equals("Shake In Y"))
 		{
 			intentobject = yaxis;
 		}
-
-		if(gesturename.equals("Shake In Z"))
+		else if(gesturename.equals("Shake In Z"))
 		{
 			intentobject = zaxis;
 		}
