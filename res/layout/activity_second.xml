@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="64dip" >
+
+    <ImageView
+        android:id="@+id/thumb"
+        android:layout_width="32dip"
+        android:layout_height="32dip"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp" />
+
+    <ImageView
+        android:id="@+id/ImageView01"
+        android:layout_width="32dip"
+        android:layout_height="32dip"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/thumb"
+        android:layout_marginRight="8dp"
+         />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/thumb"
+        android:layout_marginLeft="8dp"
+        android:text="TextView"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:text="Set App"
+        android:textSize="14sp" />
+    
+</RelativeLayout>
