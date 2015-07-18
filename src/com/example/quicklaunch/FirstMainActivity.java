@@ -133,7 +133,6 @@ public class FirstMainActivity extends Activity {
 			  });
 		
 		startAllGestureServices();
-		//Toast.makeText(getBaseContext(), "", Toast.LENGTH_LONG).show();		
 	}
 	
 	@Override
