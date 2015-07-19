@@ -65,9 +65,7 @@ public class GestureListActivity extends Activity {
 					
 					reloadDataAndServices();
 			   }
-			  });
-		
-		startAllGestureServices();
+			  });		
 	}
 	
 	@Override
@@ -86,16 +84,16 @@ public class GestureListActivity extends Activity {
 	
 	public void reloadDataAndServices(){
 		SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("GoQuick", 0);		
-		String soundPackageName = sharedPref.getString("Proximity","Default");
-		String orientationPackageName = sharedPref.getString("Shake In X","Default");
-		String shakePackageName = sharedPref.getString("Shake In Y","Default");
-		String proximityPackageName = sharedPref.getString("Shake In Z","Default");
+		String proximityPackageName = sharedPref.getString("Proximity","Default");
+		String shakeXPackageName = sharedPref.getString("Shake In X","Default");
+		String shakeYPackageName = sharedPref.getString("Shake In Y","Default");
+		String shakeZPackageName = sharedPref.getString("Shake In Z","Default");
 				
 		String[] packageNameList = new String[4] ;
-		packageNameList[0] = soundPackageName;
-		packageNameList[1] = orientationPackageName;
-		packageNameList[2] = shakePackageName;
-		packageNameList[3] = proximityPackageName;
+		packageNameList[0] = proximityPackageName;
+		packageNameList[1] = shakeXPackageName;
+		packageNameList[2] = shakeYPackageName;
+		packageNameList[3] = shakeZPackageName;
 		lv.setAdapter(new GestureListAdapter(this, Item, Images, packageNameList));
 		
 		for (int i = 0; i < Item.length; i++) {

@@ -49,7 +49,7 @@ public class ShakeZService extends Service implements SensorEventListener {
 	public void onSensorChanged(SensorEvent arg0) {
 
 		float[] sp = arg0.values;
-		if (sp[2] > 13) {
+		if (sp[2] > 12) {
 			Intent launchIntent = getPackageManager()
 					.getLaunchIntentForPackage(packagename1);
 			startActivity(launchIntent);

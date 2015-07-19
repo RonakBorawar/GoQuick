@@ -50,7 +50,7 @@ public class ShakeYService extends Service implements SensorEventListener {
 	public void onSensorChanged(SensorEvent arg0) {
 
 		float[] sp = arg0.values;
-		if (sp[1] > 14) {
+		if (sp[1] > 12) {
 			Intent launchIntent = getPackageManager()
 					.getLaunchIntentForPackage(packagename1);
 			startActivity(launchIntent);
