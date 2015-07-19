@@ -91,7 +91,7 @@ public class GestureListActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_first);
+		setContentView(R.layout.gesture_list_view);
 		
 		xaxis = new Intent(getBaseContext(), ShakeXService.class);
 		yaxis = new Intent(getBaseContext(), ShakeYService.class);
