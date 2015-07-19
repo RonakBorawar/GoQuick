@@ -1,7 +1,6 @@
 package com.example.quicklaunch;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
@@ -51,7 +50,7 @@ public class ShakeYService extends Service implements SensorEventListener {
 	public void onSensorChanged(SensorEvent arg0) {
 
 		float[] sp = arg0.values;
-		if (sp[1] > 13) {
+		if (sp[1] > 14) {
 			Intent launchIntent = getPackageManager()
 					.getLaunchIntentForPackage(packagename1);
 			startActivity(launchIntent);

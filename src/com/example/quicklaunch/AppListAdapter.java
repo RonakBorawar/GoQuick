@@ -2,6 +2,7 @@ package com.example.quicklaunch;
 
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -12,7 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class AppListAdapter extends ArrayAdapter<ApplicationInfo> {
+@SuppressLint("InflateParams") public class AppListAdapter extends ArrayAdapter<ApplicationInfo> {
 	private List<ApplicationInfo> appsList = null;
 	private Context context;
 	private PackageManager packageManager;

@@ -1,14 +1,12 @@
 package com.example.quicklaunch;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Handler;
 import android.os.IBinder;
 
 public class ShakeXService extends Service implements SensorEventListener {
@@ -54,7 +52,7 @@ public class ShakeXService extends Service implements SensorEventListener {
 	public void onSensorChanged(SensorEvent arg0) {
 		
 		float[] sp = arg0.values;
-		if (sp[0] > 13) {
+		if (sp[0] > 11) {
 			Intent launchIntent = getPackageManager()
 					.getLaunchIntentForPackage(packagename1);
 			startActivity(launchIntent);

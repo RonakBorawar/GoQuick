@@ -1,13 +1,10 @@
 package com.example.quicklaunch;
 
 import android.app.Activity;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -25,68 +22,6 @@ public class GestureListActivity extends Activity {
 	View v;
 	ListView lv;
 	Context context;
-
-	public Intent serviceObjectForGestureName(String gesturename, Context context) {
-		
-		Intent intentobject = null;
-		
-		if(gesturename.equals("Proximity"))
-		{
-			intentobject = proximity;
-		}
-		else if(gesturename.equals("Shake In X"))
-		{
-			intentobject = xaxis;
-		}
-		else if(gesturename.equals("Shake In Y"))
-		{
-			intentobject = yaxis;
-		}
-		else if(gesturename.equals("Shake In Z"))
-		{
-			intentobject = zaxis;
-		}
-
-		return intentobject;
-		
-	}
-	
-	public void stopGestureService(String gesturename, Context context) {
-		
-		Intent stopintent = serviceObjectForGestureName(gesturename, context);
-		context.stopService(stopintent);
-	}
-
-	public void startGestureService(String gesturename,String packageName, Context context) {
-		
-		Intent startIntent = serviceObjectForGestureName(gesturename, context);
-		startIntent.putExtra("Package", packageName);
-		context.startService(startIntent);
-	}
-	
-	public void startAllGestureServices() {
-		
-		for (int i = 0; i < Item.length; i++) {
-			SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("GoQuick", 0);
-			String sharedPreferencePackageName = sharedPref.getString(Item[i],"Default");
-			
-            if(sharedPreferencePackageName != null && sharedPreferencePackageName.equals("Default") == false){
-    			startGestureService(Item[i], sharedPreferencePackageName, getBaseContext());
-            }
-		}
-	}
-	public void stopAllGestureServices() {
-	
-		for (int i = 0; i < Item.length; i++) {
-			stopGestureService(Item[i], getBaseContext());
-		}
-	}
-	
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		stopAllGestureServices();
-	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +78,12 @@ public class GestureListActivity extends Activity {
 		reloadDataAndServices();
 	} 
 	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		stopAllGestureServices();
+	}
+	
 	public void reloadDataAndServices(){
 		SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("GoQuick", 0);		
 		String soundPackageName = sharedPref.getString("Proximity","Default");
@@ -166,5 +107,61 @@ public class GestureListActivity extends Activity {
             	startGestureService(Item[i], sharedPreferencePackageName, getBaseContext());
             }
 		}
+	}
+	
+public Intent serviceObjectForGestureName(String gesturename, Context context) {
+		
+		Intent intentobject = null;
+		
+		if(gesturename.equals("Proximity"))
+		{
+			intentobject = proximity;
+		}
+		else if(gesturename.equals("Shake In X"))
+		{
+			intentobject = xaxis;
+		}
+		else if(gesturename.equals("Shake In Y"))
+		{
+			intentobject = yaxis;
+		}
+		else if(gesturename.equals("Shake In Z"))
+		{
+			intentobject = zaxis;
+		}
+
+		return intentobject;		
+	}
+
+	public void startGestureService(String gesturename,String packageName, Context context) {
+		
+		Intent startIntent = serviceObjectForGestureName(gesturename, context);
+		startIntent.putExtra("Package", packageName);
+		context.startService(startIntent);
+	}
+	
+	public void startAllGestureServices() {
+		
+		for (int i = 0; i < Item.length; i++) {
+			SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("GoQuick", 0);
+			String sharedPreferencePackageName = sharedPref.getString(Item[i],"Default");
+			
+            if(sharedPreferencePackageName != null && sharedPreferencePackageName.equals("Default") == false){
+    			startGestureService(Item[i], sharedPreferencePackageName, getBaseContext());
+            }
+		}
+	}
+	
+	public void stopAllGestureServices() {
+	
+		for (int i = 0; i < Item.length; i++) {
+			stopGestureService(Item[i], getBaseContext());
+		}
+	}
+	
+	public void stopGestureService(String gesturename, Context context) {
+		
+		Intent stopintent = serviceObjectForGestureName(gesturename, context);
+		context.stopService(stopintent);
 	}
 }

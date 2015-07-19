@@ -1,39 +1,27 @@
 package com.example.quicklaunch;
 
-import java.util.List;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class GestureListAdapter extends BaseAdapter {
+@SuppressLint("ViewHolder") public class GestureListAdapter extends BaseAdapter {
 	String[] result;
 	Context context;
 	int[] imageId;
 	private static LayoutInflater inflater = null;
 	Intent intent;
 	public static TextView tv1, tv2;
-	public static ImageView img1, img2;
-	SharedPreferences shared_preferences1, shared_preferences2,
-			shared_preferences3, shared_preferences4;
-	SharedPreferences.Editor shared_preferences_editor1,
-			shared_preferences_editor2, shared_preferences_editor3,
-			shared_preferences_editor4;
-
-	public static String[] Item = { "SetApp1", "SetApp2", "SetApp3", "SetApp4" };
-	public static int[] Images = { R.drawable.app_default_icon, R.drawable.app_default_icon,
-			R.drawable.app_default_icon, R.drawable.app_default_icon };
+	public static ImageView img1, img2;	
 	public static String[] packageNameList;
 		
 	//HashMap<String, String> object = new HashMap<String, String>();
@@ -69,7 +57,7 @@ public class GestureListAdapter extends BaseAdapter {
 		return position;
 	}
 
-	@Override
+	@SuppressLint("InflateParams") @Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 
