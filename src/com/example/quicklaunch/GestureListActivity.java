@@ -79,7 +79,12 @@ public class GestureListActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		stopAllGestureServices();
+		for (int i = 0; i < Item.length; i++) {
+			String nullStr = null;
+			Intent stopintent = serviceObjectForGestureName(Item[i], context);
+			stopintent.putExtra("Package", nullStr);
+			context.stopService(stopintent);
+		}
 	}
 	
 	public void reloadDataAndServices(){
@@ -159,7 +164,9 @@ public Intent serviceObjectForGestureName(String gesturename, Context context) {
 	
 	public void stopGestureService(String gesturename, Context context) {
 		
+		String nullStr = null;
 		Intent stopintent = serviceObjectForGestureName(gesturename, context);
-		context.stopService(stopintent);
+		stopintent.putExtra("Package", nullStr);
+		context.startService(stopintent);
 	}
 }
