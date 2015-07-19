@@ -85,13 +85,6 @@ public class ThirdMainActivity extends ListActivity {
 		new LoadApplications().execute();
 	}
 
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main, menu);
-
-		return true;
-	}
-
 	public void start(String packageName, String appName, Drawable appIcon) {
 		counter++;
 
@@ -104,9 +97,7 @@ public class ThirdMainActivity extends ListActivity {
 		proximity = new Intent(getBaseContext(), Proximity.class);
 		// startService(proximity);
 
-		PackageName = packageName;
-		showDialog(1);
-		
+		PackageName = packageName;	
 	}
 
 	@Override

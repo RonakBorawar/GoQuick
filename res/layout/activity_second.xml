@@ -39,7 +39,8 @@
         android:layout_alignBottom="@+id/textView1"
         android:layout_alignParentRight="true"
         android:layout_marginRight="8dp"
-        android:text="Set App"
+        android:text="Select app"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="14sp" />
     
 </RelativeLayout>

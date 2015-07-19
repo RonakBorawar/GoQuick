@@ -105,7 +105,7 @@ public class SecondMainActivity extends BaseAdapter {
 				tv2.setText(appName);
 				img2.setImageDrawable(appIcon);
 			}else{
-				tv2.setText("Select App");
+				tv2.setText("Select app");
 				img2.setBackgroundResource(R.drawable.app_default_icon);
 			}
 		}
