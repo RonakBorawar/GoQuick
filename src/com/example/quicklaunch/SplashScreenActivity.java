@@ -13,7 +13,7 @@ public class SplashScreenActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        i=new Intent(getBaseContext(),FirstMainActivity.class);
+        i=new Intent(getBaseContext(),GestureListActivity.class);
 		new Thread(new Runnable() {
 			
 			@Override

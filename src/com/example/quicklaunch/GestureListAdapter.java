@@ -17,7 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SecondMainActivity extends BaseAdapter {
+public class GestureListAdapter extends BaseAdapter {
 	String[] result;
 	Context context;
 	int[] imageId;
@@ -38,7 +38,7 @@ public class SecondMainActivity extends BaseAdapter {
 		
 	//HashMap<String, String> object = new HashMap<String, String>();
 	
-	public SecondMainActivity(FirstMainActivity mainActivity,
+	public GestureListAdapter(GestureListActivity mainActivity,
 			String[] prgmNameList, int[] prgmImages, String[] lpackageNameList) {
 		// TODO Auto-generated constructor stub
 		packageNameList = lpackageNameList;
@@ -73,7 +73,7 @@ public class SecondMainActivity extends BaseAdapter {
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 
-		convertView = inflater.inflate(R.layout.activity_second, null);
+		convertView = inflater.inflate(R.layout.gesture_list_item, null);
 		tv1 = (TextView) convertView.findViewById(R.id.textView1);
 		img1 = (ImageView) convertView.findViewById(R.id.thumb);
 		tv1.setText(result[position]);

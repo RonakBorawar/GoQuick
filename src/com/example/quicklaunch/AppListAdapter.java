@@ -12,12 +12,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class FourthMainActivity extends ArrayAdapter<ApplicationInfo> {
+public class AppListAdapter extends ArrayAdapter<ApplicationInfo> {
 	private List<ApplicationInfo> appsList = null;
 	private Context context;
 	private PackageManager packageManager;
 
-	public FourthMainActivity(Context context, int textViewResourceId,
+	public AppListAdapter(Context context, int textViewResourceId,
 			List<ApplicationInfo> appsList) {
 		super(context, textViewResourceId, appsList);
 		this.context = context;
@@ -46,7 +46,7 @@ public class FourthMainActivity extends ArrayAdapter<ApplicationInfo> {
 		if (null == view) {
 			LayoutInflater layoutInflater = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = layoutInflater.inflate(R.layout.activity_fourth, null);
+			view = layoutInflater.inflate(R.layout.app_list_item, null);
 		}
 
 		ApplicationInfo applicationInfo = appsList.get(position);

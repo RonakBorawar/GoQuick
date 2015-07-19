@@ -8,21 +8,23 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Handler;
 import android.os.IBinder;
 
-public class Yaxis extends Service implements SensorEventListener {
+public class ShakeXService extends Service implements SensorEventListener {
 
 	SensorManager sensor_manager;
-	Sensor yaxis;
+	Sensor xaxis;
 	SharedPreferences shared_preferences;
-	
-	String packagename1=null;
 
-    @Override
+	String packagename1=null;
+		
+	@Override
 	public IBinder onBind(Intent arg0) {
 		return null;
 	}
-   	
+
+	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		
@@ -30,16 +32,17 @@ public class Yaxis extends Service implements SensorEventListener {
 		packagename1=packagename;
 		
 		sensor_manager=(SensorManager) getSystemService(SENSOR_SERVICE);
-		yaxis = sensor_manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-		
+		xaxis = sensor_manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
 		if(packagename1 == null){
-			sensor_manager.unregisterListener(this, yaxis);	
+			sensor_manager.unregisterListener(this, xaxis);	
 		}else{
-			sensor_manager.registerListener(this, yaxis,
+			sensor_manager.registerListener(this, xaxis,
 						SensorManager.SENSOR_DELAY_NORMAL);		
 		}
 		
 		return START_STICKY;
+		
 	}
 
 	@Override
@@ -49,9 +52,9 @@ public class Yaxis extends Service implements SensorEventListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent arg0) {
-
+		
 		float[] sp = arg0.values;
-		if (sp[1] > 13) {
+		if (sp[0] > 13) {
 			Intent launchIntent = getPackageManager()
 					.getLaunchIntentForPackage(packagename1);
 			startActivity(launchIntent);

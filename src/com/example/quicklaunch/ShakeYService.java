@@ -10,31 +10,32 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.IBinder;
 
-public class Zaxis extends Service implements SensorEventListener {
-	SensorManager sensor_manager;
-	Sensor zaxis;
-	SharedPreferences shared_preferences;
+public class ShakeYService extends Service implements SensorEventListener {
 
+	SensorManager sensor_manager;
+	Sensor yaxis;
+	SharedPreferences shared_preferences;
+	
 	String packagename1=null;
-    
-	@Override
+
+    @Override
 	public IBinder onBind(Intent arg0) {
 		return null;
 	}
-
+   	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-
+		
 		String packagename = intent.getStringExtra("Package");
 		packagename1=packagename;
 		
 		sensor_manager=(SensorManager) getSystemService(SENSOR_SERVICE);
-		zaxis = sensor_manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		yaxis = sensor_manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		
 		if(packagename1 == null){
-			sensor_manager.unregisterListener(this, zaxis);	
+			sensor_manager.unregisterListener(this, yaxis);	
 		}else{
-			sensor_manager.registerListener(this, zaxis,
+			sensor_manager.registerListener(this, yaxis,
 						SensorManager.SENSOR_DELAY_NORMAL);		
 		}
 		
@@ -50,7 +51,7 @@ public class Zaxis extends Service implements SensorEventListener {
 	public void onSensorChanged(SensorEvent arg0) {
 
 		float[] sp = arg0.values;
-		if (sp[2] > 13) {
+		if (sp[1] > 13) {
 			Intent launchIntent = getPackageManager()
 					.getLaunchIntentForPackage(packagename1);
 			startActivity(launchIntent);

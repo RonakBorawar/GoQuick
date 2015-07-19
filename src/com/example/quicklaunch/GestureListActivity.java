@@ -13,7 +13,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class FirstMainActivity extends Activity {
+public class GestureListActivity extends Activity {
 
 	public static String[] Item = { "Proximity", "Shake In X", "Shake In Y", "Shake In Z" };
 	public static int[] Images = { R.drawable.icon_proximity_gesture, R.drawable.icon_shake_x_gesture,
@@ -91,12 +91,12 @@ public class FirstMainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_first);
+		setContentView(R.layout.gesture_list_view);
 		
-		xaxis = new Intent(getBaseContext(), Xaxis.class);
-		yaxis = new Intent(getBaseContext(), Yaxis.class);
-		zaxis = new Intent(getBaseContext(), Zaxis.class);
-		proximity = new Intent(getBaseContext(), Proximity.class);
+		xaxis = new Intent(getBaseContext(), ShakeXService.class);
+		yaxis = new Intent(getBaseContext(), ShakeYService.class);
+		zaxis = new Intent(getBaseContext(), ShakeZService.class);
+		proximity = new Intent(getBaseContext(), ProximityService.class);
 		
 		lv = (ListView) findViewById(R.id.listitem);
 		context = this;
@@ -108,7 +108,7 @@ public class FirstMainActivity extends Activity {
 		    	  String gestureName = Item[position];		    	  
 					//Toast.makeText(context, "", Toast.LENGTH_LONG).show();
 					// TODO Auto-generated method stub
-					intent = new Intent(context,ThirdMainActivity.class);
+					intent = new Intent(context,AppListActivity.class);
 					intent.putExtra("GestureType", gestureName);
 					startActivity(intent);
 		      }
@@ -155,7 +155,7 @@ public class FirstMainActivity extends Activity {
 		packageNameList[1] = orientationPackageName;
 		packageNameList[2] = shakePackageName;
 		packageNameList[3] = proximityPackageName;
-		lv.setAdapter(new SecondMainActivity(this, Item, Images, packageNameList));
+		lv.setAdapter(new GestureListAdapter(this, Item, Images, packageNameList));
 		
 		for (int i = 0; i < Item.length; i++) {
 			String sharedPreferencePackageName = sharedPref.getString(Item[i],"Default");

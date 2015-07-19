@@ -27,7 +27,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ThirdMainActivity extends ListActivity {
+public class AppListActivity extends ListActivity {
 
 	String[] Item = { "X-DIRECTION", "Y-DIRECTION", "Z-DIRECTION", "PROXIMITY" };
 	boolean[] set_values = { false, false, false, false };
@@ -47,15 +47,15 @@ public class ThirdMainActivity extends ListActivity {
 
 	private PackageManager packageManager = null;
 	private List<ApplicationInfo> applist = null;
-	private FourthMainActivity listadaptor = null;
+	private AppListAdapter listadaptor = null;
 	String PackageName = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_third);
-		intent = new Intent(getBaseContext(), FirstMainActivity.class);
+		setContentView(R.layout.app_list_view);
+		intent = new Intent(getBaseContext(), GestureListActivity.class);
 		shared_preferences1 = getSharedPreferences("user1",
 				Context.MODE_PRIVATE);
 		shared_preferences2 = getSharedPreferences("user2",
@@ -76,10 +76,10 @@ public class ThirdMainActivity extends ListActivity {
 		packageManager = getPackageManager();
 		
 
-		xaxis = new Intent(getBaseContext(), Xaxis.class);
-		yaxis = new Intent(getBaseContext(), Yaxis.class);
-		zaxis = new Intent(getBaseContext(), Zaxis.class);
-		proximity = new Intent(getBaseContext(), Proximity.class);
+		xaxis = new Intent(getBaseContext(), ShakeXService.class);
+		yaxis = new Intent(getBaseContext(), ShakeYService.class);
+		zaxis = new Intent(getBaseContext(), ShakeZService.class);
+		proximity = new Intent(getBaseContext(), ProximityService.class);
 		
 		gestureName = getIntent().getExtras().getString("GestureType");
 		new LoadApplications().execute();
@@ -88,13 +88,13 @@ public class ThirdMainActivity extends ListActivity {
 	public void start(String packageName, String appName, Drawable appIcon) {
 		counter++;
 
-		xaxis = new Intent(getBaseContext(), Xaxis.class);
+		xaxis = new Intent(getBaseContext(), ShakeXService.class);
 		// startService(xaxis);
-		yaxis = new Intent(getBaseContext(), Yaxis.class);
-		zaxis = new Intent(getBaseContext(), Zaxis.class);
+		yaxis = new Intent(getBaseContext(), ShakeYService.class);
+		zaxis = new Intent(getBaseContext(), ShakeZService.class);
 		// startService(yaxis);
 		// startService(zaxis);
-		proximity = new Intent(getBaseContext(), Proximity.class);
+		proximity = new Intent(getBaseContext(), ProximityService.class);
 		// startService(proximity);
 
 		PackageName = packageName;	
@@ -281,8 +281,8 @@ public class ThirdMainActivity extends ListActivity {
 		protected Void doInBackground(Void... params) {
 			applist = checkForLaunchIntent(packageManager
 					.getInstalledApplications(PackageManager.GET_META_DATA));
-			listadaptor = new FourthMainActivity(ThirdMainActivity.this,
-					R.layout.activity_first, applist);
+			listadaptor = new AppListAdapter(AppListActivity.this,
+					R.layout.gesture_list_view, applist);
 
 			return null;
 		}
@@ -301,7 +301,7 @@ public class ThirdMainActivity extends ListActivity {
 
 		@Override
 		protected void onPreExecute() {
-			progress = ProgressDialog.show(ThirdMainActivity.this, null,
+			progress = ProgressDialog.show(AppListActivity.this, null,
 					"Loading application info...");
 			super.onPreExecute();
 		}

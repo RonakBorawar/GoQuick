@@ -25,23 +25,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.quicklaunch.FirstMainActivity"
+            android:name="com.example.quicklaunch.GestureListActivity"
             android:screenOrientation="portrait">
            
         </activity>
         <activity
-            android:name="com.example.quicklaunch.ThirdMainActivity"
+            android:name="com.example.quicklaunch.AppListActivity"
             android:label="Select app"
             android:screenOrientation="portrait">        
         </activity>    
          <service 
-            android:name="com.example.quicklaunch.Xaxis"> </service>
+            android:name="com.example.quicklaunch.ShakeXService"> </service>
         <service 
-            android:name="com.example.quicklaunch.Yaxis"> </service>
+            android:name="com.example.quicklaunch.ShakeYService"> </service>
         <service 
-            android:name="com.example.quicklaunch.Zaxis"> </service>
+            android:name="com.example.quicklaunch.ShakeZService"> </service>
         <service 
-            android:name="com.example.quicklaunch.Proximity"> </service>
+            android:name="com.example.quicklaunch.ProximityService"> </service>
     </application>
 
 </manifest>
