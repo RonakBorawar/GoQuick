@@ -32,8 +32,8 @@ public class SecondMainActivity extends BaseAdapter {
 			shared_preferences_editor4;
 
 	public static String[] Item = { "SetApp1", "SetApp2", "SetApp3", "SetApp4" };
-	public static int[] Images = { R.drawable.launchapp, R.drawable.launchapp,
-			R.drawable.launchapp, R.drawable.launchapp };
+	public static int[] Images = { R.drawable.app_default_icon, R.drawable.app_default_icon,
+			R.drawable.app_default_icon, R.drawable.app_default_icon };
 	public static String[] packageNameList;
 		
 	//HashMap<String, String> object = new HashMap<String, String>();
@@ -85,7 +85,7 @@ public class SecondMainActivity extends BaseAdapter {
 		String packageName = packageNameList[position];
 		if(packageName.equals("Default")){
 			tv2.setText("Select App");
-			img2.setBackgroundResource(R.drawable.launchapp);
+			img2.setBackgroundResource(R.drawable.app_default_icon);
 		}else{
 			PackageManager packageManager = context.getPackageManager();
 			ApplicationInfo app = null;
@@ -106,22 +106,9 @@ public class SecondMainActivity extends BaseAdapter {
 				img2.setImageDrawable(appIcon);
 			}else{
 				tv2.setText("Select App");
-				img2.setBackgroundResource(R.drawable.launchapp);
+				img2.setBackgroundResource(R.drawable.app_default_icon);
 			}
 		}
-		
-//		img2.setOnClickListener(new OnClickListener() {
-//		
-//			@Override
-//			public void onClick(View v) {
-//				
-//				//Toast.makeText(context, "", Toast.LENGTH_LONG).show();
-//				// TODO Auto-generated method stub
-//				intent = new Intent(context,ThirdMainActivity.class);
-//				intent.putExtra("GestureType", result[position]);
-//				context.startActivity(intent);
-//			}
-//		});
 		return convertView;
 		
 	}

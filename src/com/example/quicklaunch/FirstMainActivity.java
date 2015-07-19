@@ -16,8 +16,8 @@ import android.widget.ListView;
 public class FirstMainActivity extends Activity {
 
 	public static String[] Item = { "Proximity", "Shake In X", "Shake In Y", "Shake In Z" };
-	public static int[] Images = { R.drawable.soundicon, R.drawable.orientation,
-		R.drawable.shakeicon, R.drawable.proximity };
+	public static int[] Images = { R.drawable.icon_proximity_gesture, R.drawable.icon_shake_x_gesture,
+		R.drawable.icon_shake_y_gesture, R.drawable.icon_shake_z_gesture };
 	
 	Intent intent, xaxis, yaxis, zaxis, proximity;
 
