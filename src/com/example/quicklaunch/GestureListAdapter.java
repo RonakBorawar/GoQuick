@@ -73,7 +73,7 @@ public class GestureListAdapter extends BaseAdapter {
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 
-		convertView = inflater.inflate(R.layout.gesture_list_item, null);
+		convertView = inflater.inflate(R.layout.activity_second, null);
 		tv1 = (TextView) convertView.findViewById(R.id.textView1);
 		img1 = (ImageView) convertView.findViewById(R.id.thumb);
 		tv1.setText(result[position]);

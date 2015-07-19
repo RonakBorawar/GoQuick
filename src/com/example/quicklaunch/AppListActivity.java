@@ -54,7 +54,7 @@ public class AppListActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.app_list_view);
+		setContentView(R.layout.activity_third);
 		intent = new Intent(getBaseContext(), GestureListActivity.class);
 		shared_preferences1 = getSharedPreferences("user1",
 				Context.MODE_PRIVATE);
@@ -282,7 +282,7 @@ public class AppListActivity extends ListActivity {
 			applist = checkForLaunchIntent(packageManager
 					.getInstalledApplications(PackageManager.GET_META_DATA));
 			listadaptor = new AppListAdapter(AppListActivity.this,
-					R.layout.gesture_list_view, applist);
+					R.layout.activity_third, applist);
 
 			return null;
 		}
