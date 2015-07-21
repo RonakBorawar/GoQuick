@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.goquick.R;
 
 @SuppressLint("InflateParams") public class AppListAdapter extends ArrayAdapter<ApplicationInfo> {
 	private List<ApplicationInfo> appsList = null;

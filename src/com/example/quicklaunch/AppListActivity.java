@@ -15,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.goquick.R;
 
 public class AppListActivity extends ListActivity {
 

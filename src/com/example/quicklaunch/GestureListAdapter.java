@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.goquick.R;
 
 @SuppressLint("ViewHolder") public class GestureListAdapter extends BaseAdapter {
 	String[] result;
